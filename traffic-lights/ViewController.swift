@@ -19,32 +19,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var switchButton: UIButton!
     
     enum trafficStatus{
-        case off
         case red
         case yellow
         case green
     }
     
-    var status = trafficStatus.off
+    var status = trafficStatus.red
     
     @IBAction func switchTraffic() {
         switchButton.setTitle("NEXT", for: .normal)
         
         switch status {
-        case .off:
-            redLight.alpha = 1
-            status = trafficStatus.red
         case .red:
-            redLight.alpha = 0.3
-            yellowLight.alpha = 1
-            status = trafficStatus.yellow
-        case .yellow:
-            yellowLight.alpha = 0.3
-            greenLight.alpha = 1
-            status = trafficStatus.green
-        case .green:
             greenLight.alpha = 0.3
             redLight.alpha = 1
+            status = trafficStatus.yellow
+        case .yellow:
+            redLight.alpha = 0.3
+            yellowLight.alpha = 1
+            status = trafficStatus.green
+        case .green:
+            yellowLight.alpha = 0.3
+            greenLight.alpha = 1
             status = trafficStatus.red
         }
     }
